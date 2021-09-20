@@ -18,7 +18,7 @@ public class CustomerService {
 	@Autowired
 	CustomerRepository customerRepository;
 	
-	public Customer CreateCustomer(Customer customer)
+	public Customer createCustomer(Customer customer)
 	{
 		CustomerModel customerModel = new CustomerModel();
 		BeanUtils.copyProperties(customer, customerModel);
@@ -58,7 +58,7 @@ public class CustomerService {
 		
 	}
 	
-	public void DeleteCustomer(Integer Id)
+	public void deleteCustomer(Integer Id)
 	{
 		customerRepository.deleteById(Id);
 	}

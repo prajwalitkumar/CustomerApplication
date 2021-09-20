@@ -24,10 +24,10 @@ public class CustomerController {
 	@Autowired
 	CustomerService customerService;
 	
-	@PostMapping(value = "/cus")
+	@PostMapping(value = "/postcustomer")
 	public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer)
 	{
-		Customer cusData = customerService.CreateCustomer(customer);
+		Customer cusData = customerService.createCustomer(customer);
 		return new ResponseEntity<Customer>(cusData,HttpStatus.CREATED);
 	}
 	
@@ -38,17 +38,17 @@ public class CustomerController {
 		return new ResponseEntity<List<Customer>>(customer,HttpStatus.OK);
 	}
 	
-	@GetMapping(value = "/cus/{id}")
+	@GetMapping(value = "/getcustomer/{id}")
 	public ResponseEntity<Customer> getCustomerById(@PathVariable Integer id)
 	{
 		Customer cus= customerService.getCustomerById(id);
 		return new ResponseEntity<Customer>(cus,HttpStatus.OK);
 	}
 	
-	@DeleteMapping(value = "/cus/{id}")
+	@DeleteMapping(value = "/deletecustomer/{id}")
 	public ResponseEntity<String> deleteCustomer(@PathVariable Integer id)
 	{
-		customerService.DeleteCustomer(id);
+		customerService.deleteCustomer(id);
 		return new ResponseEntity<String>(HttpStatus.OK);
 	}
 	
