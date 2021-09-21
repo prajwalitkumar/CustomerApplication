@@ -18,7 +18,18 @@ public class CustomerModel {
 	private int age;
 	private String email;
 	
+	public CustomerModel() {
+		
+	} 
 	
+	
+	public CustomerModel(Integer id, String name, int age, String email) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.age = age;
+		this.email = email;
+	}
 	public Integer getId() {
 		return id;
 	}
