@@ -1,11 +1,18 @@
 package com.deloitte.CustomerApplication.Customer.Entities;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(description = "Details about the Customer")
 public class Customer {
 	
-	
+	@ApiModelProperty(notes = "Unique ID of Customer")
 	private Integer id;
+	@ApiModelProperty(notes = "Name of Customer")
 	private String name;
+	@ApiModelProperty(notes = "Age of Customer")
 	private int age;
+	@ApiModelProperty(notes = "EmailID of Customer")
 	private String email;
 	public Integer getId() {
 		return id;

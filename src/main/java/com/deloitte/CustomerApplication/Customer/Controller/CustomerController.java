@@ -16,8 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.deloitte.CustomerApplication.Customer.Entities.Customer;
 import com.deloitte.CustomerApplication.Customer.Service.CustomerService;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.Contact;
+
 @RestController
-@RequestMapping(value = "/customer")
+@RequestMapping(value = "/api")
+/* @RequestMapping(value = "/customer") */
 public class CustomerController {
 	
 	
@@ -25,13 +30,15 @@ public class CustomerController {
 	CustomerService customerService;
 	
 	@PostMapping(value = "/postcustomer")
-	public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer)
+	@ApiOperation(value = "Create customer ", notes = "It create customer by taking ID, NAME , EMAIL, AGE values", response = Contact.class)
+	public ResponseEntity<Customer> createCustomer(@ApiParam(value = "It takes ID, NAME , EMAIL, AGE values" , required = true)@RequestBody Customer customer)
 	{
 		Customer cusData = customerService.createCustomer(customer);
 		return new ResponseEntity<Customer>(cusData,HttpStatus.CREATED);
 	}
 	
 	@GetMapping
+	@ApiOperation(value = "Display Customer Details ", notes = "It display customer details", response = Contact.class)
 	public ResponseEntity<List<Customer>> getCustomer()
 	{
 		List<Customer> customer = customerService.getCustomer();
@@ -39,14 +46,16 @@ public class CustomerController {
 	}
 	
 	@GetMapping(value = "/getcustomer/{id}")
-	public ResponseEntity<Customer> getCustomerById(@PathVariable Integer id)
+	@ApiOperation(value = "Display Customer Details By ID ", notes = "It display customer details by taking customer ID", response = Contact.class)
+	public ResponseEntity<Customer> getCustomerById(@ApiParam(value = "It takes Customer ID for displaying customer details" , required = true)@PathVariable Integer id)
 	{
 		Customer cus= customerService.getCustomerById(id);
 		return new ResponseEntity<Customer>(cus,HttpStatus.OK);
 	}
 	
 	@DeleteMapping(value = "/deletecustomer/{id}")
-	public ResponseEntity<String> deleteCustomer(@PathVariable Integer id)
+	@ApiOperation(value = "Delete Customer Details ", notes = "It delete customer details by taking customer ID", response = Contact.class)
+	public ResponseEntity<String> deleteCustomer(@ApiParam(value = "It takes Customer ID for deleting customer details" , required = true)@PathVariable Integer id)
 	{
 		customerService.deleteCustomer(id);
 		return new ResponseEntity<String>(HttpStatus.OK);

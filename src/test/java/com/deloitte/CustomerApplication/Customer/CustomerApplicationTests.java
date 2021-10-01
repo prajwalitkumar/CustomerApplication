@@ -37,7 +37,7 @@ class CustomerApplicationTests {
 		 Customer customer = new Customer();
 		 customer.setName("Prajwalit");
 		 when(this.service.createCustomer(any(Customer.class))).thenReturn(customer);
-		ResponseEntity<Customer>customer2=this.controller.createCustomer(customer);
+		ResponseEntity<Customer>customer2 = this.controller.createCustomer(customer);
 		assertEquals(201,customer2.getStatusCodeValue());
 	 }
 	 
@@ -48,7 +48,7 @@ class CustomerApplicationTests {
 		customerList.add(customer);
 		
 		 when(this.service.getCustomer()).thenReturn(customerList);
-		 ResponseEntity<List<Customer>>customer2=this.controller.getCustomer();
+		 ResponseEntity<List<Customer>>customer2 = this.controller.getCustomer();
 		 assertEquals(200,customer2.getStatusCodeValue());
 		
 	 }
@@ -57,7 +57,7 @@ class CustomerApplicationTests {
      public void getCustomerByIdControllerTest() {
 		 Customer customer = new Customer();
 		 when(this.service.getCustomerById(ArgumentMatchers.anyInt())).thenReturn(customer);
-		 ResponseEntity<Customer>customer2=this.controller.getCustomerById(1);
+		 ResponseEntity<Customer>customer2 = this.controller.getCustomerById(1);
 			assertEquals(200,customer2.getStatusCodeValue());
 		
 	 }
@@ -65,7 +65,7 @@ class CustomerApplicationTests {
 	 @Test
      public void deleteCustomerControllerTest() {
 		 this.service.deleteCustomer(1);
-		 ResponseEntity<String>customer2=this.controller.deleteCustomer(1);
+		 ResponseEntity<String>customer2 = this.controller.deleteCustomer(1);
 			assertEquals(200,customer2.getStatusCodeValue());
 		
 	 }
