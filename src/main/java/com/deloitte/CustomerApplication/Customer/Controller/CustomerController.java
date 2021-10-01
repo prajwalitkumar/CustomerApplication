@@ -30,7 +30,7 @@ public class CustomerController {
 	CustomerService customerService;
 	
 	@PostMapping(value = "/postcustomer")
-	@ApiOperation(value = "Create customer ", notes = "It create customer by taking ID, NAME , EMAIL, AGE values", response = Contact.class)
+	@ApiOperation(value = "Create customer ", notes = "It create customer by taking ID, NAME , EMAIL, AGE values", response = Customer.class)
 	public ResponseEntity<Customer> createCustomer(@ApiParam(value = "It takes ID, NAME , EMAIL, AGE values" , required = true)@RequestBody Customer customer)
 	{
 		Customer cusData = customerService.createCustomer(customer);
@@ -38,7 +38,7 @@ public class CustomerController {
 	}
 	
 	@GetMapping
-	@ApiOperation(value = "Display Customer Details ", notes = "It display customer details", response = Contact.class)
+	@ApiOperation(value = "Display Customer Details ", notes = "It display customer details", response = Customer.class)
 	public ResponseEntity<List<Customer>> getCustomer()
 	{
 		List<Customer> customer = customerService.getCustomer();
@@ -46,7 +46,7 @@ public class CustomerController {
 	}
 	
 	@GetMapping(value = "/getcustomer/{id}")
-	@ApiOperation(value = "Display Customer Details By ID ", notes = "It display customer details by taking customer ID", response = Contact.class)
+	@ApiOperation(value = "Display Customer Details By ID ", notes = "It display customer details by taking customer ID", response = Customer.class)
 	public ResponseEntity<Customer> getCustomerById(@ApiParam(value = "It takes Customer ID for displaying customer details" , required = true)@PathVariable Integer id)
 	{
 		Customer cus= customerService.getCustomerById(id);
@@ -54,7 +54,7 @@ public class CustomerController {
 	}
 	
 	@DeleteMapping(value = "/deletecustomer/{id}")
-	@ApiOperation(value = "Delete Customer Details ", notes = "It delete customer details by taking customer ID", response = Contact.class)
+	@ApiOperation(value = "Delete Customer Details ", notes = "It delete customer details by taking customer ID", response = Customer.class)
 	public ResponseEntity<String> deleteCustomer(@ApiParam(value = "It takes Customer ID for deleting customer details" , required = true)@PathVariable Integer id)
 	{
 		customerService.deleteCustomer(id);
